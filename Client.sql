@@ -1,0 +1,14 @@
+CREATE DATABASE BankApp_MySQL_db;
+
+USE BankApp_MySQL_db;
+
+CREATE TABLE Client(
+	CNP CHAR(15) PRIMARY KEY,
+    Nume VARCHAR(50) NOT NULL,
+    Prenume VARCHAR(50) NOT NULL,
+    Adresa VARCHAR(50) NULL,
+    IdLogin INT NOT NULL,
+    Telefon VARCHAR(20) NOT NULL
+);
+
+SELECT * FROM Client;
