@@ -75,6 +75,7 @@ namespace BankApp_CSharp_MySQL
             // 
             this.textBox_parola.Location = new System.Drawing.Point(193, 146);
             this.textBox_parola.Name = "textBox_parola";
+            this.textBox_parola.PasswordChar = '*';
             this.textBox_parola.Size = new System.Drawing.Size(183, 26);
             this.textBox_parola.TabIndex = 4;
             // 

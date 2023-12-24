@@ -143,6 +143,7 @@ namespace BankApp_CSharp_MySQL
             this.btn_actualizare_date.TabIndex = 10;
             this.btn_actualizare_date.Text = "Actualizare date";
             this.btn_actualizare_date.UseVisualStyleBackColor = true;
+            this.btn_actualizare_date.Click += new System.EventHandler(this.btn_actualizare_date_Click);
             // 
             // dataGridView1
             // 
