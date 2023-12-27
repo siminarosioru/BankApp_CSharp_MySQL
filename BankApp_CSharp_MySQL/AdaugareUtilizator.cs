@@ -48,7 +48,26 @@ namespace BankApp_CSharp_MySQL
 
         private void btn_actualizare_date_Click(object sender, EventArgs e)
         {
+             try
+            {
+                //crearea conexiunii
+                MySqlConnection con = new MySqlConnection();
+                con.connectionString = conString;
+                //conexiunea este deschisa
+                con.Open();
 
+                //creez query-ul numit selectQuery, care afiseaza informatia din tabel
+                string selectQuery = "SELECT * FROM login";
+                DataTable table = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery, conString);
+                adapter.Fill(table);
+                dataGridView1.DataSource = table;
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
