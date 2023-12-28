@@ -69,5 +69,13 @@ namespace BankApp_CSharp_MySQL
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btn_stergere_campuri_Click(object sender, EventArgs e)
+        {
+            textBox_utilizator.Text = " ";
+            textBox_parola.Text = " ";
+            textBox_nume.Text = " ";
+            textBox_prenume.Text = " ";
+        }
     }
 }
