@@ -1,4 +1,5 @@
-﻿using System;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,5 +29,33 @@ namespace BankApp_CSharp_MySQL
             label6.Text = idLogin; //label6 nu se vede la compilare
             label6.Visible = false;
         }
+
+        private void btn_Adaugare_Click(object sender, EventArgs e)
+        {
+            //crearea conexiunii
+            MySqlConnection con = new MySqlConnection();
+
+            try
+            {
+                con.connectionString = conString;
+                //conexiunea este dechisa
+                con.Open();
+
+                //creez query-ul numit sqlInsert
+                string sqlInsert = "INSERT INTO client(CNP, Nume, Prenume, Adresa, IdLogin, Telefon) VALUES('" +
+                    textBox_CNP.Text + "', '" + textBox_Nume.Text + "', '" + textBox_Prenume.Text + "', '" +
+                    textBox_Adresa.Text + "', '" + label6.Text + "', '" + textBox_Telefon.Text + "')";
+
+                MySqlCommand cmd = new MySqlCommand(sqlInsert, con);
+                int i = cmd.ExecuteNonQuery();
+                //conexiunea este inchisa
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
     }
 }
