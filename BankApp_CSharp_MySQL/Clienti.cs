@@ -56,6 +56,28 @@ namespace BankApp_CSharp_MySQL
                 MessageBox.Show(ex.Message);
             }
         }
+        private void btn_Actulizare_date_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //crearea conexiunii
+                MySqlConnection con = new MySqlConnection();
+                con.connectionString = conString;
+                con.Open();
+
+                //creez query-ul numit selectQuery
+                string selectQuery = "SELECT * FROM client";
+                DataTable table = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery, con);
+                adapter.Fill(table);
+                dataGridView_BankApp.DataSource = table;
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         
     }
 }
