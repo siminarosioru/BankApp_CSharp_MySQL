@@ -94,6 +94,37 @@ namespace BankApp_CSharp_MySQL
             dataGridView_BankApp.DataSource = table;
             con.Close();
         }
+        private void btn_Modificare_Click(object sender, EventArgs e)
+        {
+            //crearea conexiunii
+            MySqlConnection con = new MySqlConnection();
+
+            if (string.IsNullOrEmpty(textBox_Nume.Text) || string.IsNullOrEmpty(textBox_Prenume.Text) ||
+                string.IsNullOrEmpty(textBox_CNP.Text) || string.IsNullOrEmpty(textBox_Adresa.Text) ||
+                string.IsNullOrEmpty(textBox_Telefon.Text))
+                MessageBox.Show("Selectati inregistrarea care doriti sa o modificati!");
+            else
+            {
+                try
+                {
+                    con.connectionString = conString;
+                    con.Open();
+
+                    //creez query-ul numit sqlUpdate
+                    string sqlUpdate = "UPDATE client SET Nume='" + textBox_Nume.Text + "', " + "Prenume='" + textBox_Prenume.Text + "',Adresa='" +
+                        textBox_Adresa.Text + "',Telefon='" + textBox_Telefon.Text +
+                        "'WHERE CNP='" + textBox_CNP.Text + "'";
+
+                    MySqlCommand cmd = new MySqlCommand(sqlUpdate, con);
+                    int i = cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
         
     }
 }
