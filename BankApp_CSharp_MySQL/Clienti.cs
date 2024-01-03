@@ -125,6 +125,37 @@ namespace BankApp_CSharp_MySQL
                 }
             }
         }
-        
+        private void btn_Stergere_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox_CNP.Text) || string.IsNullOrEmpty(textBox_Nume.Text) ||
+                string.IsNullOrEmpty(textBox_Prenume.Text) || string.IsNullOrEmpty(textBox_Adresa.Text) ||
+                string.IsNullOrEmpty(textBox_Telefon.Text))
+                MessageBox.Show("Selectati inregistrarea care doriti sa fie stearsa!");
+            else
+            {
+                try
+                {
+                    //crearea conexiunii
+                    MySqlConnection con = new MySqlConnection();
+                    con.connectionString = conString;
+                    con.Open();
+
+                    string sqlDelete1 = "DELETE FROM iban WHERE CNP='" + textBox_CNP.Text + "'";
+                    MySqlCommand cmd1 = new MySqlCommand(sqlDelete1, con);
+                    int i1 = cmd1.ExecuteNonQuery();
+
+                    //creez query-ul numit sqlDelete
+                    string sqlDelete = "DELETE FROM client WHERE CNP='" + textBox_CNP.Text + "'";
+                    MySqlCommand cmd = new MySqlCommand(sqlDelete, con);
+                    int i = cmd.ExecuteNonQuery();
+                    MessageBox.Show("S-a sters inregistrarea!");
+                    con.Close();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
     }
 }
