@@ -1,7 +1,7 @@
 # BankApp_CSharp_MySQL
 
 # User Interface Design
-![](images/the%20Bank%20Application%20interface.png)
+![](the%20Bank%20Application%20interface.png)
 
 # Description
 - the tool used is Visual Studio 2019, Windows Forms App (.NET Framework)
