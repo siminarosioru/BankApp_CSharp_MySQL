@@ -157,5 +157,18 @@ namespace BankApp_CSharp_MySQL
                 }
             }
         }
+        private void btn_Adaugare_Cont_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox_CNP.Text) || string.IsNullOrEmpty(textBox_Nume.Text) ||
+                string.IsNullOrEmpty(textBox_Prenume.Text) || string.IsNullOrEmpty(textBox_Adresa.Text) ||
+                string.IsNullOrEmpty(textBox_Telefon.Text))
+                MessageBox.Show("Selectati inregistrarea care doriti sa o modificati!");
+            else
+            {
+                AdaugareCont cont = new AdaugareCont(textBox_Nume.Text, textBox_Prenume.Text, textBox_CNP.Text,
+                    textBox_Adresa.Text, textBox_Telefon.Text);
+                cont.Show();
+            }
+        }
     }
 }
