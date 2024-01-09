@@ -1,3 +1,4 @@
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,9 +33,28 @@ namespace BankApp_CSharp_MySQL
             textBox_telefon.Text = telefon;
         }
 
-        private void btn_Adaugare_cont_Click(object sender, EventArgs e)
+         private void btn_Adaugare_cont_Click(object sender, EventArgs e)
         {
+            //crearea conexiunii
+            MySqlConnection con = new MySqlConnection();
 
+            try
+            {
+                con.connectionString = conString;
+                con.Open();
+
+                //creez query-ul numit sqlInsert
+                string sqlInsert = "INSERT INTO iban(CNP, Tip_cont, Numar, Sold) VALUES('" + textBox_cnp.Text + "', '" +
+                    comboBox_tipCont.Text + "', '" + textBox_numar.Text + "', '" + textBox_sold.Text + "')";
+
+                MySqlCommand cmd = new MySqlCommand(sqlInsert, con);
+                int i = cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         
