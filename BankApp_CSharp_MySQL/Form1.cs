@@ -28,9 +28,7 @@ namespace BankApp_CSharp_MySQL
             //crearea conexiunii
             try
             {
-#pragma warning disable IDE0017 // Simplify object initialization
                 MySqlConnection con = new MySqlConnection();
-#pragma warning restore IDE0017 // Simplify object initialization
                 con.connectionString = conString;
                 con.Open();
 
@@ -74,7 +72,7 @@ namespace BankApp_CSharp_MySQL
 
     internal class MySqlConnection
     {
-        public string connectionString { get; internal set; }
+        public string connectionString { get; set; }
 
         internal void Close()
         {
