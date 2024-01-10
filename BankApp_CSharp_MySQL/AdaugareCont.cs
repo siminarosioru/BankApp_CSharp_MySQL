@@ -57,6 +57,24 @@ namespace BankApp_CSharp_MySQL
             }
         }
 
+        //the information for the "AdaugareCont" interface
+        private void AdaugareCont_Load(object sender, EventArgs e)
+        {
+            //crearea conexiunii
+            MySqlConnection con = new MySqlConnection();
+            con.connectionString = conString;
+            con.Open();
+
+            //creez query-ul numit selectQuery
+            string selectQuery = "SELECT * FROM iban WHERE CNP='" + textBox_cnp.Text + "'";
+
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery, con);
+            adapter.Fill(table);
+            dataGridView1.DataSource = table;
+            con.Close();
+        }
+
         
     }
 }
