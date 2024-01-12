@@ -75,6 +75,27 @@ namespace BankApp_CSharp_MySQL
             con.Close();
         }
 
-        
+        private void btn_Actualizare_date_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //crearea conexiunii
+                MySqlConnection con = new MySqlConnection();
+                con.connectionString = conString;
+                con.Open();
+
+                //creez query-ul numit selectQuery
+                string selectQuery="SELECT * FROM iban WHERE CNP='" + textBox_cnp.Text + "'";
+                DataTable table = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery, con);
+                adapter.Fill(table);
+                dataGridView1.DataSource = table;
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
