@@ -16,7 +16,10 @@
 - then press the "Actualizare date" button and the new record is present in the data base ->
 - when you want to modify a record -> select the linie to modify -> then press the "Modificare" button and then the "Actualizare date" button
 - when you want to delete a record -> select the linie to delete -> then press the "Stergere" button and then the "Actualizare date" button
+- the last button in the "Clienti" interface is the "Adaugare cont" button -> 
+- when press the "Adaugare cont" button -> open the "Adaugare Cont" interface
 ![](photo%20with%20the%20Clienti%20interface.png)
+
 
 # Description
 - the tool used is Visual Studio 2019, Windows Forms App (.NET Framework)
